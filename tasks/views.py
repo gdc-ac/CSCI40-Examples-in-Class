@@ -1,12 +1,15 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Task
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+
+from .models import Task
+
 
 def index(request):
-    return HttpResponse('Hello World')
+    return HttpResponse("Hello World")
+
 
 # Use list-based for a more custom approach
 # def task_list(request):
@@ -25,11 +28,13 @@ def index(request):
 
 #     return render(request, 'task_detail.html', ctx)
 
-# Use class based if you want something simple 
+
+# Use class based if you want something simple
 class TaskListView(ListView):
     model = Task
-    template_name = 'task_list.html'
+    template_name = "task_list.html"
+
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
-    template_name = 'task_detail.html'
+    template_name = "task_detail.html"
