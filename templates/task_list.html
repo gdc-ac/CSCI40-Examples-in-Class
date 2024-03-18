@@ -29,13 +29,34 @@
             <h1>Mag <a href="{% url 'login' %}">log-in</a> ka nga</h1>
         {% endif %}
         {% for task in object_list %}  
-            <h2>  
+            <h3>  
             <li>
                 <a href = "{{ task.get_absolute_url }}">
                     {{ task }}
                 </a>
             </li>
-            </h2>
+            </h3>
         {% endfor %}
+        <form method="POST">
+            {% csrf_token %}
+            <label for="task_name">
+                <span>
+                    Task Name
+                </span>
+                <input type="text" id="task_name" name="task_name">
+            </label>
+            <label for="task_due">
+                <span>
+                    Task Due Date
+                </span>
+                <input type="datetime-local" id="task_due" name="task_due">
+                <select id="taskgroup" name="taskgroup">
+                    {% for group in taskgroups %}
+                    <option value="{{ group.pk }}">{{ group }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <button type="submit">Submit</button>
+        </form>
     </body>
 </html>
