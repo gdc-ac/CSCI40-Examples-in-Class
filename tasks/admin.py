@@ -24,7 +24,9 @@ class TaskAdmin(admin.ModelAdmin):
         "taskgroup",
     ]
 
-    fieldsets = [("Details", {"fields": [("name", "due_date"), "taskgroup"]})]
+    fieldsets = [
+        ("Details", {"fields": [("name", "due_date"), "taskgroup", "task_image"]})
+    ]
 
 
 admin.site.register(TaskGroup, TaskGroupAdmin)

@@ -17,6 +17,7 @@ class Task(models.Model):
     taskgroup = models.ForeignKey(
         TaskGroup, on_delete=models.CASCADE, related_name="tasks", default=1
     )
+    task_image = models.ImageField(upload_to="images/", null=True)
 
     def __str__(self):
         return "{} due on {}".format(self.name, self.due_date)
